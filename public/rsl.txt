@@ -1,0 +1,11 @@
+RSL-Version: 0.1
+Publisher: Aval Newsrooms / Asilo Digital
+Author: Daniel Patete
+Resource: /blog/protected-article
+License: sello-voice
+Attribution: Según Daniel Patete en Aval Newsrooms / Asilo Digital
+Summary: allowed_with_attribution
+Training: prohibited_without_separate_license
+Voice: licensed_flow_required
+Record: solana-devnet-demo-or-content-sello-pda
+Note: Payment and narration remain demo-level unless the UI explicitly shows a confirmed devnet transaction.

@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "publisher": "Aval Newsrooms / Asilo Digital",
+  "author": "Daniel Patete",
+  "default_permission": "allowed_with_conditions",
+  "allowed_purposes": [
+    {
+      "purpose": "summarization",
+      "status": "allowed_with_attribution"
+    },
+    {
+      "purpose": "quotation",
+      "status": "allowed_with_attribution"
+    }
+  ],
+  "restricted_purposes": [
+    {
+      "purpose": "training",
+      "status": "prohibited_without_separate_license"
+    },
+    {
+      "purpose": "voice_narration",
+      "status": "licensed_flow_required"
+    }
+  ],
+  "sello": {
+    "license_type": "sello-voice",
+    "attribution_requirement": "Según Daniel Patete en Aval Newsrooms / Asilo Digital",
+    "summary_permission": "allowed_with_attribution",
+    "training_restriction": "prohibited_without_separate_license",
+    "voice_narration_condition": "request narration through the licensed flow before producing audio",
+    "solana_record": "demo placeholder or devnet ContentSello PDA from /register"
+  }
+}

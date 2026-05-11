@@ -1,0 +1,21 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.devnet]
+sello = "HhXvRpC6uDfCF6sHNWv3xD2yzyjpiEW17eeK13tFaycC"
+
+[programs.localnet]
+sello = "HhXvRpC6uDfCF6sHNWv3xD2yzyjpiEW17eeK13tFaycC"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "cargo test"

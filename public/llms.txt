@@ -1,0 +1,19 @@
+# Sello Protocol / Aval Newsrooms Demo
+# Publisher: Aval Newsrooms / Asilo Digital
+# Author: Daniel Patete
+# License: sello-voice
+# Attribution: "Según Daniel Patete en Aval Newsrooms / Asilo Digital"
+
+User-agent: *
+Allow: /blog/protected-article
+Allow: /llms.txt
+Allow: /tdm-policy.json
+Allow: /rsl.txt
+
+Sello-License: sello-voice
+Sello-Summary: allowed-with-attribution
+Sello-Quote: allowed-with-attribution
+Sello-Training: prohibited-without-separate-license
+Sello-Voice: licensed-narration-required
+Sello-Onchain: solana:devnet:demo-or-content-sello-pda
+Sello-Note: This hackathon build separates implemented proof flows from demo payment/narration flows.

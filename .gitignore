@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+target/
+anchor/target/
+anchor/.anchor/
+.anchor/
+*.log
+.env
+.env.local
+.env.*.local
+*.pdf
+*:Zone.Identifier
+coverage/

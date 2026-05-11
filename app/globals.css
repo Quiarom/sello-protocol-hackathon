@@ -1,0 +1,329 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #0d0705;
+  --foreground: #ebe1cf;
+  --primary: #cc1512;
+  --primary-foreground: #ffdeda;
+  --muted: #ad8883;
+  --muted-foreground: #ad8883;
+  --card: #171308;
+  --card-foreground: #ebe1cf;
+  --popover: #171308;
+  --popover-foreground: #ebe1cf;
+  --border: #5d3f3b;
+  --border-low: rgba(173, 136, 131, 0.24);
+  --input: #393427;
+  --accent: #241f13;
+  --accent-foreground: #ebe1cf;
+  --cream: #f0e6d3;
+  --destructive: #ef4444;
+  --destructive-foreground: #ef4444;
+  --ring: #ffb4a9;
+  --radius: 0rem;
+  --secondary: #241f13;
+  --secondary-foreground: #ebe1cf;
+  --gold: #c9a84c;
+  --green-ink: #00e38b;
+  --font-work-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-newsreader: Georgia, "Times New Roman", serif;
+  --font-bebas-neue: "Arial Narrow", Impact, sans-serif;
+  --font-playfair: Georgia, "Times New Roman", serif;
+  --font-jetbrains-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-sans: var(--font-work-sans), sans-serif;
+  --font-serif: var(--font-newsreader), serif;
+  --font-display: var(--font-bebas-neue), sans-serif;
+  --font-headline: var(--font-playfair), serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-border-low: var(--border-low);
+  --color-input: var(--input);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-ring: var(--ring);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-gold: var(--gold);
+  --color-green-ink: var(--green-ink);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+  --font-headline: var(--font-headline);
+  --font-mono: var(--font-mono);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    overflow-x: clip;
+    font-family: var(--font-serif);
+    background:
+      radial-gradient(circle at 20% 5%, rgba(204, 21, 18, 0.18), transparent 28rem),
+      radial-gradient(circle at 82% 10%, rgba(201, 168, 76, 0.09), transparent 24rem),
+      linear-gradient(115deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 14px),
+      #0d0705;
+  }
+
+  body::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    opacity: 0.32;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+    mix-blend-mode: screen;
+  }
+
+  ::selection {
+    background: rgba(204, 21, 18, 0.55);
+    color: var(--cream);
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-headline {
+    font-family: var(--font-headline);
+  }
+
+  .font-label {
+    font-family: var(--font-sans);
+  }
+
+  .postal-card {
+    position: relative;
+    border: 1px solid var(--border-low);
+    background:
+      linear-gradient(180deg, rgba(36, 31, 19, 0.92), rgba(18, 14, 4, 0.95)),
+      var(--card);
+  }
+
+  .postal-card::before,
+  .postal-card::after {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    pointer-events: none;
+    content: "";
+    opacity: 0.38;
+  }
+
+  .postal-card::before {
+    top: 14px;
+    left: 14px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+  }
+
+  .postal-card::after {
+    right: 14px;
+    bottom: 14px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .airmail-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      #cc1512 0,
+      #cc1512 10px,
+      transparent 10px,
+      transparent 20px,
+      #393427 20px,
+      #393427 30px,
+      transparent 30px,
+      transparent 40px
+    );
+  }
+
+  .stamp-image {
+    clip-path: polygon(
+      0 8px,
+      8px 8px,
+      8px 0,
+      calc(100% - 8px) 0,
+      calc(100% - 8px) 8px,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 8px) calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      8px calc(100% - 8px),
+      0 calc(100% - 8px)
+    );
+  }
+
+  .postcard-frame {
+    border: 1px solid var(--border-low);
+    background:
+      linear-gradient(180deg, rgba(36, 31, 19, 0.92), rgba(18, 14, 4, 0.95)),
+      var(--card);
+  }
+
+  .stamp-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 2px solid currentColor;
+    padding: 0.75rem 1.15rem;
+    color: var(--primary);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition:
+      color 160ms ease,
+      background-color 160ms ease,
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
+
+  .stamp-button::before {
+    position: absolute;
+    inset: 3px;
+    border: 1px dashed currentColor;
+    content: "";
+    opacity: 0.34;
+  }
+
+  .stamp-button:hover:not(:disabled) {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    transform: translateY(-1px) rotate(-0.4deg);
+  }
+
+  .stamp-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+  }
+
+  .stamp-button-secondary {
+    color: var(--foreground);
+    border-color: var(--border);
+    background: rgba(18, 14, 4, 0.72);
+  }
+
+  .stamp-badge {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid currentColor;
+    padding: 0.38rem 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .postal-input {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: rgba(13, 7, 5, 0.68);
+    padding: 0.72rem 0.85rem;
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    outline: none;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .postal-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(204, 21, 18, 0.18);
+  }
+
+  .postmark {
+    border: 2px solid rgba(173, 136, 131, 0.36);
+    border-radius: 9999px;
+    color: rgba(173, 136, 131, 0.48);
+    font-family: var(--font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+}
+
+
+.wallet-adapter-button-trigger,
+.wallet-adapter-button {
+  background: transparent !important;
+  border: 2px solid var(--primary) !important;
+  border-radius: 0 !important;
+  color: var(--primary) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.95rem !important;
+  height: 2.75rem !important;
+  letter-spacing: 0.08em !important;
+  padding: 0 1rem !important;
+  text-transform: uppercase !important;
+  transition: all 160ms ease !important;
+}
+
+.wallet-adapter-button-trigger:hover,
+.wallet-adapter-button:hover {
+  background: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+.wallet-adapter-dropdown-list,
+.wallet-adapter-modal-wrapper {
+  font-family: var(--font-sans) !important;
+}
+
+.wallet-adapter-modal-title {
+  color: var(--cream) !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button {
+  border: 1px solid var(--border-low) !important;
+  color: var(--cream) !important;
+  font-family: var(--font-sans) !important;
+  justify-content: flex-start !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}

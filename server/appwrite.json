@@ -1,0 +1,38 @@
+{
+    "projectId": "sello-protocol",
+    "projectName": "sello-protocol",
+    "functions": [
+        {
+            "$id": "fn-narrate",
+            "name": "narrate",
+            "runtime": "node-22.0",
+            "execute": [
+                "any"
+            ],
+            "path": "functions/narrate",
+            "entrypoint": "src/main.ts",
+            "scopes": [
+                "storage.write",
+                "databases.write"
+            ],
+            "events": [],
+            "cron": "",
+            "timeout": 30,
+            "enabled": true,
+            "logging": true,
+            "variables": {
+                "ELEVENLABS_API_KEY": "",
+                "FIRECRAWL_API_KEY": "",
+                "TREASURY_WALLET": "Y5GHe2xYz9ThBZsGN7VVJuSyjXNrkoGg1E2AJrNQYwN",
+                "ANCHOR_PROGRAM_ID": "HhXvRpC6uDfCF6sHNWv3xD2yzyjpiEW17eeK13tFaycC",
+                "AUTHORITY_PUBKEY": "Y5GHe2xYz9ThBZsGN7VVJuSyjXNrkoGg1E2AJrNQYwN",
+                "SOLANA_RPC_URL": "https://api.devnet.solana.com",
+                "APPWRITE_AUDIO_BUCKET_ID": "narrations",
+                "APPWRITE_DB_ID": "sello-db",
+                "APPWRITE_ENDPOINT": "https://nyc.cloud.appwrite.io/v1",
+                "APPWRITE_PROJECT_ID": "sello-protocol"
+            }
+        }
+    ],
+    "$schema": "https://appwrite.io/appwrite.json"
+}

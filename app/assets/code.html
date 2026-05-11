@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sello Protocol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "background": "#0D0705",
+                        "outline-variant": "#5d3f3b",
+                        "primary-fixed-dim": "#ffb4a9",
+                        "tertiary-fixed": "#56ffa8",
+                        "surface-container-low": "#1f1b10",
+                        "secondary-container": "#7505db",
+                        "on-primary-container": "#ffdeda",
+                        "surface-container-lowest": "#120e04",
+                        "error": "#ffb4ab",
+                        "primary-container": "#cc1512",
+                        "error-container": "#93000a",
+                        "surface-container": "#241f13",
+                        "on-surface": "#ebe1cf",
+                        "on-secondary": "#450086",
+                        "on-background": "#ebe1cf",
+                        "on-secondary-fixed-variant": "#6300bb",
+                        "on-surface-variant": "#e6bdb7",
+                        "secondary-fixed-dim": "#d8b9ff",
+                        "outline": "#ad8883",
+                        "tertiary-container": "#007646",
+                        "on-secondary-fixed": "#290055",
+                        "tertiary": "#00e38b",
+                        "on-secondary-container": "#dbbdff",
+                        "surface-dim": "#171308",
+                        "tertiary-fixed-dim": "#00e38b",
+                        "surface-tint": "#ffb4a9",
+                        "on-tertiary-container": "#77ffb2",
+                        "primary-fixed": "#ffdad5",
+                        "inverse-surface": "#ebe1cf",
+                        "surface-container-highest": "#393427",
+                        "secondary-fixed": "#eddcff",
+                        "on-tertiary-fixed": "#002110",
+                        "on-tertiary-fixed-variant": "#00522f",
+                        "on-primary-fixed-variant": "#930004",
+                        "surface-container-high": "#2e2a1d",
+                        "on-tertiary": "#00391f",
+                        "inverse-primary": "#bf0409",
+                        "secondary": "#d8b9ff",
+                        "primary": "#ffb4a9",
+                        "surface": "#171308",
+                        "surface-bright": "#3e392c",
+                        "surface-variant": "#393427",
+                        "on-error": "#690005",
+                        "on-primary": "#690002",
+                        "inverse-on-surface": "#353023",
+                        "on-primary-fixed": "#410001"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Newsreader", "serif"],
+                        "code-sm": ["JetBrains Mono", "monospace"],
+                        "data-label": ["Work Sans", "sans-serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "display-lg": ["Bebas Neue", "sans-serif"],
+                        "body-lg": ["Newsreader", "serif"],
+                        "headline-lg": ["Playfair Display", "serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "code-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "data-label": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .texture-bg {
+            background-color: #0D0705;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.02"/%3E%3C/svg%3E');
+        }
+        .stamp-edge {
+            mask-image: radial-gradient(circle at 8px 8px, transparent 8px, black 8.5px);
+            mask-size: 24px 24px;
+            mask-position: -8px -8px;
+        }
+        .serrated-border {
+            position: relative;
+            mask-image: 
+                radial-gradient(circle at 10px 10px, transparent 10px, black 10.5px),
+                linear-gradient(black, black);
+            mask-size: 20px 20px, calc(100% - 20px) calc(100% - 20px);
+            mask-position: -10px -10px, center;
+            mask-repeat: repeat, no-repeat;
+        }
+        .postcard-bg {
+            background-image: none;
+            background-color: rgba(23, 19, 8, 0.3);
+        }
+        .airmail-stripe {
+            background: repeating-linear-gradient(
+                -45deg,
+                #cc1512 0,
+                #cc1512 12px,
+                transparent 12px,
+                transparent 24px,
+                #393427 24px,
+                #393427 36px,
+                transparent 36px,
+                transparent 48px
+            );
+        }
+        .rubber-stamp {
+            border: 2px solid;
+            position: relative;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+        }
+        .rubber-stamp::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border: 1px dashed currentColor;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .seal-shadow {
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8)) drop-shadow(0 2px 2px rgba(204,21,18,0.3));
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md texture-bg min-h-screen">
+<!-- TopAppBar -->
+<nav class="docked full-width top-0 border-t border-primary-container bg-background/90 backdrop-blur-md dark:bg-background/90 border-b border-outline-variant/50 flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto hidden md:flex z-50 sticky">
+<div class="flex items-center gap-4">
+<img alt="Sello Protocol Logo" class="h-10 w-10 object-contain seal-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn4-7vbW6uhY0aZWMxg_TaiifZKyadda_GH_UMBzM7fkai2XodJXWZdQf0C-qLVdmJQ0yTtRotUeyHzSSniQppnhMUX_Gx4G7G1cO9_Zm01NZ8FcqpDnzI9uK0phy2mKd5x_XrtqG5vvQSPq2pcCRsc79GWvLw3MotoukaNEcFueFrphyorQ7yArK2OB43lsoJJJJ3v5ULhxQPmjK9yDFVOiSNtM57zPECnDvyBjMdaZhKC1nlg1-YEF_pfF_mYdeujSDTDlsiEH0"/>
+<span class="font-headline-lg text-headline-md text-on-surface dark:text-on-surface uppercase flex items-center gap-2 tracking-widest">SELLO PROTOCOL</span>
+</div>
+<div class="flex gap-8">
+<a class="font-display-lg text-headline-md tracking-widest uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="#">DOCS</a>
+<a class="font-display-lg text-headline-md tracking-widest uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="#">GITHUB</a>
+<a class="font-display-lg text-headline-md tracking-widest uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="#">VERIFY</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-code-sm text-code-sm uppercase text-primary-container px-6 py-2 hover:bg-primary-container hover:text-on-primary-container transition-all tracking-wider rubber-stamp">CONNECT WALLET</button>
+</div>
+</nav>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 bg-background/95 backdrop-blur-md border-t border-outline-variant/50 shadow-lg flex justify-around items-center pb-safe h-20 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">mark_as_unread</span>
+<span class="font-display-lg text-data-label uppercase mt-1">CORRESPONDENCE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">local_post_office</span>
+<span class="font-display-lg text-data-label uppercase mt-1">DISPATCH</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-display-lg text-data-label uppercase mt-1">ARCHIVE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-display-lg text-data-label uppercase mt-1">OFFICIAL</span>
+</a>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24 pb-32 md:pb-24">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center mb-24 max-w-4xl mx-auto relative">
+<div class="absolute -top-12 -left-12 border-2 border-outline-variant/40 rounded-full w-24 h-24 flex items-center justify-center rotate-[-15deg] opacity-30 pointer-events-none hidden md:flex">
+<div class="border border-outline-variant/40 rounded-full w-20 h-20 flex flex-col items-center justify-center">
+<span class="font-code-sm text-[8px] tracking-widest text-outline-variant">SELLO</span>
+<span class="font-code-sm text-[8px] tracking-widest text-outline-variant">POSTAL</span>
+</div>
+<div class="absolute w-32 h-12 border-t-2 border-b-2 border-outline-variant/30 left-16 skew-y-12"></div>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:text-[64px] leading-tight text-on-surface mb-6 font-medium">
+                PROTEGE TU OBRA EN LA ERA DE LA IA
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                Sello Protocol actúa como tu notario digital. Registra tu contenido, establece reglas claras y monetiza cada uso automáticamente mediante licencias on-chain verificables.
+            </p>
+<button class="font-display-lg text-headline-md uppercase text-primary-container px-10 py-4 hover:bg-primary-container hover:text-on-primary-container transition-all bg-transparent flex items-center gap-2 rubber-stamp group">
+                EMPEZAR AHORA <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</section>
+<!-- Two Column Feature Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
+<!-- Left Column: Visual Area -->
+<div class="relative border border-outline-variant/30 p-8 flex items-center justify-center min-h-[400px] bg-surface-container-lowest/50">
+<!-- Floating License Card Preview -->
+<div class="bg-surface-container-high rotate-2 max-w-[450px] w-full absolute z-10 serrated-border p-2 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+<div class="bg-surface border border-outline-variant/50 p-6 postcard-bg h-full w-full relative flex flex-col">
+<!-- Airmail Stripes -->
+<div class="h-1.5 w-full airmail-stripe absolute top-0 left-0"></div>
+<div class="h-1.5 w-full airmail-stripe absolute bottom-0 left-0"></div>
+<!-- Decorative Postmark -->
+<div class="absolute top-6 right-16 border-2 border-outline-variant/50 rounded-full w-14 h-14 flex items-center justify-center rotate-[25deg] opacity-60">
+<div class="border border-outline-variant/50 rounded-full w-12 h-12 flex flex-col items-center justify-center">
+<span class="font-code-sm text-[6px] tracking-widest text-outline-variant">VERIFIED</span>
+</div>
+<div class="absolute w-24 h-6 border-t-2 border-b-2 border-outline-variant/40 -right-8 -skew-x-12"></div>
+</div>
+<!-- Stamp Placeholder -->
+<div class="absolute top-6 right-6 w-10 h-12 bg-primary-container/10 border-2 border-dashed border-primary-container/40 flex items-center justify-center rotate-3">
+<img alt="Sello Mini Seal" class="w-6 h-6 object-contain opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn4-7vbW6uhY0aZWMxg_TaiifZKyadda_GH_UMBzM7fkai2XodJXWZdQf0C-qLVdmJQ0yTtRotUeyHzSSniQppnhMUX_Gx4G7G1cO9_Zm01NZ8FcqpDnzI9uK0phy2mKd5x_XrtqG5vvQSPq2pcCRsc79GWvLw3MotoukaNEcFueFrphyorQ7yArK2OB43lsoJJJJ3v5ULhxQPmjK9yDFVOiSNtM57zPECnDvyBjMdaZhKC1nlg1-YEF_pfF_mYdeujSDTDlsiEH0"/>
+</div>
+<div class="flex mt-8">
+<div class="w-7/12 pr-6 border-r-2 border-dashed border-outline-variant/40">
+<h4 class="font-code-sm text-[10px] text-on-surface-variant mb-1 uppercase tracking-widest">LICENCIA OFICIAL</h4>
+<p class="font-headline-md text-[28px] leading-none text-on-surface mb-6 font-bold">Licencia MIT-AI</p>
+<div class="space-y-3 font-code-sm text-[12px] text-on-surface-variant">
+<div class="flex justify-between border-b border-outline-variant/20 pb-1"><span>Status:</span> <span class="text-tertiary">Activa</span></div>
+<div class="flex justify-between border-b border-outline-variant/20 pb-1"><span>Registro:</span> <span>#0x8f...3a9c</span></div>
+<div class="flex justify-between border-b border-outline-variant/20 pb-1"><span>Atribución:</span> <span>Requerida</span></div>
+</div>
+</div>
+<div class="w-5/12 pl-6 flex flex-col justify-end gap-5 pb-2 opacity-30">
+<div class="h-px w-full bg-outline-variant"></div>
+<div class="h-px w-full bg-outline-variant"></div>
+<div class="h-px w-4/5 bg-outline-variant"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Stamp Graphic -->
+<div class="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
+<img alt="Large Sello Stamp" class="w-64 h-64 object-contain grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn4-7vbW6uhY0aZWMxg_TaiifZKyadda_GH_UMBzM7fkai2XodJXWZdQf0C-qLVdmJQ0yTtRotUeyHzSSniQppnhMUX_Gx4G7G1cO9_Zm01NZ8FcqpDnzI9uK0phy2mKd5x_XrtqG5vvQSPq2pcCRsc79GWvLw3MotoukaNEcFueFrphyorQ7yArK2OB43lsoJJJJ3v5ULhxQPmjK9yDFVOiSNtM57zPECnDvyBjMdaZhKC1nlg1-YEF_pfF_mYdeujSDTDlsiEH0"/>
+</div>
+</div>
+<!-- Right Column: Features & Path -->
+<div>
+<h2 class="font-display-lg text-headline-lg text-primary-container mb-8 tracking-widest border-b border-outline-variant/30 pb-4 relative">
+<div class="absolute right-0 bottom-2 text-outline-variant/30 font-code-sm text-[10px]">FORM 4B-1</div>
+                        CÓMO FUNCIONA
+                    </h2>
+<div class="space-y-8 mb-12">
+<div class="flex gap-6 items-start">
+<span class="material-symbols-outlined text-primary-container text-3xl mt-1">shield</span>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Blindaje Digital</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Registra tu contenido de forma inmutable. Obtén una prueba de propiedad criptográfica instantánea.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<span class="material-symbols-outlined text-primary-container text-3xl mt-1">smart_toy</span>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">IA Verificable</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Los agentes de IA pueden leer, entender y respetar tus términos de licencia automáticamente.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<span class="material-symbols-outlined text-primary-container text-3xl mt-1">payments</span>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Pagos Automáticos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Recibe ingresos sin fricción cada vez que tu contenido es utilizado por plataformas o modelos.</p>
+</div>
+</div>
+</div>
+<!-- Choose Path -->
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-surface-container-high p-1 hover:bg-surface-bright transition-colors group serrated-border">
+<div class="border border-outline-variant/50 bg-surface-container-low h-full w-full flex flex-col items-center justify-center p-4 postcard-bg">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 group-hover:text-primary transition-colors">draw</span>
+<span class="font-display-lg text-data-label uppercase tracking-widest text-on-surface">SOY CREADOR</span>
+</div>
+</button>
+<button class="bg-surface-container-high p-1 hover:bg-surface-bright transition-colors group serrated-border">
+<div class="border border-outline-variant/50 bg-surface-container-low h-full w-full flex flex-col items-center justify-center p-4 postcard-bg">
+<span class="material-symbols-outlined text-on-surface-variant mb-2 group-hover:text-primary transition-colors">code</span>
+<span class="font-display-lg text-data-label uppercase tracking-widest text-on-surface">SOY DEVELOPER</span>
+</div>
+</button>
+</div>
+</div>
+</section>
+<!-- Verification Section -->
+<section class="mb-12 max-w-3xl mx-auto">
+<div class="border border-outline-variant/50 p-8 relative bg-surface-container-lowest postcard-bg">
+<div class="h-1 w-full airmail-stripe absolute top-0 left-0"></div>
+<h2 class="font-code-sm text-code-sm text-center mb-8 tracking-widest uppercase text-on-surface-variant flex items-center justify-center gap-4">
+<span class="h-px bg-outline-variant/30 flex-grow"></span>
+                        OFFICIAL VERIFICATION LEDGER
+                        <span class="h-px bg-outline-variant/30 flex-grow"></span>
+</h2>
+<div class="flex flex-col md:flex-row gap-4 items-end">
+<div class="flex-grow w-full">
+<label class="font-code-sm text-[10px] text-outline-variant mb-2 block uppercase tracking-widest">ENTER CONTENT URL FOR VERIFICATION</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:ring-0 focus:border-primary-container text-on-surface font-code-sm p-2" placeholder="https://" type="text"/>
+</div>
+<button class="font-code-sm text-[12px] uppercase text-primary-container px-6 py-3 hover:bg-primary-container hover:text-on-primary-container transition-all whitespace-nowrap bg-background tracking-widest rubber-stamp">
+                        VERIFICAR
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background w-full py-12 border-t border-outline-variant/30 relative overflow-hidden">
+<div class="absolute top-0 w-full h-1 airmail-stripe opacity-20"></div>
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+<div class="font-display-lg text-headline-md text-on-surface-variant flex items-center gap-4 tracking-widest">
+<img alt="Sello Protocol Footer Logo" class="h-10 w-10 opacity-70 grayscale seal-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn4-7vbW6uhY0aZWMxg_TaiifZKyadda_GH_UMBzM7fkai2XodJXWZdQf0C-qLVdmJQ0yTtRotUeyHzSSniQppnhMUX_Gx4G7G1cO9_Zm01NZ8FcqpDnzI9uK0phy2mKd5x_XrtqG5vvQSPq2pcCRsc79GWvLw3MotoukaNEcFueFrphyorQ7yArK2OB43lsoJJJJ3v5ULhxQPmjK9yDFVOiSNtM57zPECnDvyBjMdaZhKC1nlg1-YEF_pfF_mYdeujSDTDlsiEH0"/>
+                SELLO PROTOCOL
+            </div>
+<div class="flex gap-6">
+<a class="font-code-sm text-code-sm uppercase tracking-widest text-on-surface-variant hover:text-primary-container transition-all duration-300 relative after:content-[''] after:block after:h-[1px] after:bg-primary-container after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left" href="#">Legal Charter</a>
+<a class="font-code-sm text-code-sm uppercase tracking-widest text-on-surface-variant hover:text-primary-container transition-all duration-300 relative after:content-[''] after:block after:h-[1px] after:bg-primary-container after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left" href="#">Postal Rules</a>
+<a class="font-code-sm text-code-sm uppercase tracking-widest text-on-surface-variant hover:text-primary-container transition-all duration-300 relative after:content-[''] after:block after:h-[1px] after:bg-primary-container after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left" href="#">Society Privacy</a>
+</div>
+<div class="font-code-sm text-[10px] uppercase tracking-widest text-outline-variant flex items-center gap-2">
+<span class="w-4 h-4 border border-outline-variant/50 rounded-full flex items-center justify-center text-[6px]">C</span>
+                1932 SELLO POSTAL PROTOCOL. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>
