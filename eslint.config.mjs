@@ -19,7 +19,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "app/generated/**",
-    "Anchor/**",
+    "anchor-legacy/**",
     "server/**",
   ]),
 ]);
