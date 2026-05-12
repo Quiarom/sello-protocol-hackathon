@@ -123,7 +123,7 @@ async function scrapeHtml(url: string, requestUrl: string): Promise<string> {
     } catch (err) {
       console.error("Internal scrape failed:", err);
       if (url.includes("/blog/protected-article")) {
-        return `<html><head><meta name="sello" content="id:CDPPzR|license:sello-voice|author:Daniel Quiaro|publisher:Sello Demo|pay:/api/narrate|onchain:solana:devnet:CDPPzRN3eeNiSABBiBZVXpUK4uxUAY8wBRemhfGHu2Ug|price_usdc:0.10|voice_id:Rachel (Default)"></head><body>Demo Fallback</body></html>`;
+        return `<html><head><meta name="sello" content="id:CDPPzR|license:sello-voice|author:Daniel Quiaro|publisher:Sello Demo|pay:/api/narrate|onchain:solana:devnet:GW8vQ3sSZkCAVzRfp9xdG7N2UHjHBtNZKRcYwhQAJGbF|price_usdc:0.10|voice_id:Rachel (Default)"></head><body>Demo Fallback</body></html>`;
       }
       throw err;
     }

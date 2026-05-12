@@ -42,27 +42,28 @@ export function WalletProvider({ children }: PropsWithChildren) {
   const { cluster } = useCluster();
   const chain = `solana:${cluster}`;
 
-  const [connectors, setConnectors] = useState<WalletConnector[]>(() =>
-    typeof window === "undefined" ? [] : discoverWallets()
-  );
+  const [connectors, setConnectors] = useState<WalletConnector[]>([]);
   const [session, setSession] = useState<WalletSession | undefined>();
   const [status, setStatus] = useState<WalletStatus>(
     WALLET_STATUS.DISCONNECTED
   );
   const [error, setError] = useState<unknown>();
-  const isReady = typeof window !== "undefined";
+  const [mounted, setMounted] = useState(false);
 
-  const connectorsRef = useRef<WalletConnector[]>(connectors);
-
-  const handleWalletsChanged = useCallback((updated: WalletConnector[]) => {
-    connectorsRef.current = updated;
-    setConnectors(updated);
-  }, []);
+  const connectorsRef = useRef<WalletConnector[]>([]);
 
   useEffect(() => {
-    const unsubscribe = watchWallets(handleWalletsChanged);
+    setMounted(true);
+    const initialConnectors = discoverWallets();
+    setConnectors(initialConnectors);
+    connectorsRef.current = initialConnectors;
+
+    const unsubscribe = watchWallets((updated) => {
+      connectorsRef.current = updated;
+      setConnectors(updated);
+    });
     return unsubscribe;
-  }, [handleWalletsChanged]);
+  }, []);
 
   const connect = useCallback(async (connectorId: string) => {
     const connector = connectorsRef.current.find((c) => c.id === connectorId);
@@ -108,9 +109,9 @@ export function WalletProvider({ children }: PropsWithChildren) {
       error,
       connect,
       disconnect,
-      isReady,
+      isReady: mounted,
     }),
-    [connectors, status, session, signer, error, connect, disconnect, isReady]
+    [connectors, status, session, signer, error, connect, disconnect, mounted]
   );
 
   return (

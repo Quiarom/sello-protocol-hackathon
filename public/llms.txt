@@ -13,6 +13,6 @@ Sello-Summary: allowed-with-attribution
 Sello-Quote: allowed-with-attribution
 Sello-Training: restricted
 Sello-Voice: x402-style-payment-required
-Sello-Proof: solana:devnet:CDPPzRN3eeNiSABBiBZVXpUK4uxUAY8wBRemhfGHu2Ug
+Sello-Proof: solana:devnet:GW8vQ3sSZkCAVzRfp9xdG7N2UHjHBtNZKRcYwhQAJGbF
 Sello-Note: This record is a machine-readable Proof of Consent record for this content hash. 
 Sello-Context: Publisher creates the checkout. Agent uses the checkout. Solana keeps the receipt.

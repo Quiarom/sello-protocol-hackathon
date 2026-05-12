@@ -7,6 +7,6 @@ Attribution: According to Daniel Patete in Aval Newsrooms / Asilo Digital
 Summary: allowed_with_attribution
 Training: restricted
 Voice-Narration: x402-style-settlement-required
-Proof-of-Consent: solana-devnet:CDPPzRN3eeNiSABBiBZVXpUK4uxUAY8wBRemhfGHu2Ug
+Proof-of-Consent: solana-devnet:GW8vQ3sSZkCAVzRfp9xdG7N2UHjHBtNZKRcYwhQAJGbF
 Note: This is a machine-readable rights signaling aware of EU CDSM Art. 4.
 Context: Publisher creates the checkout. Agent uses the checkout. Solana devnet records the receipt.

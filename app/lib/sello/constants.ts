@@ -72,7 +72,7 @@ export const selloDemoArticle: CreatorArticle = {
     walletAddress: "Y5GHe2xYz9ThBZsGN7VVJuSyjXNrkoGg1E2AJrNQYwN",
   },
   hash: "41f2b87bb2f4f4fe4a8a7b9f9d3d2a0c1b5e7d9a3f2c4e6d8b0a1c3e5f7a9b1",
-  contentPda: "CDPPzRN3eeNiSABBiBZVXpUK4uxUAY8wBRemhfGHu2Ug",
+  contentPda: "GW8vQ3sSZkCAVzRfp9xdG7N2UHjHBtNZKRcYwhQAJGbF",
   usageReceiptPda: "GjX2pM9wR4tL1zN5bS6vH7kQ3mY8cN4qR9tA2uW1xZ5",
   license: "sello-voice",
 };
