@@ -279,8 +279,8 @@ export function CreatorDashboardView({
               NOTARY
             </div>
             <p className="text-xs sm:text-sm text-muted text-center leading-relaxed italic">
-              This panel shows current project artifacts only. No crawler events
-              or revenue are fabricated.
+              This panel shows current article records only. No live crawler
+              events or production revenue are fabricated.
             </p>
           </div>
         </section>

@@ -17,19 +17,19 @@ export function NavigationLinks() {
           href="/register"
           className={`transition-colors hover:text-primary ${isActive("/register") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
         >
-          Creator
+          Create AI Checkout
         </Link>
         <Link
           href="/onboarding/agent"
           className={`transition-colors hover:text-primary ${isActive("/onboarding/agent") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
         >
-          Agent
+          Agent Integration
         </Link>
         <Link
           href="/blog/protected-article"
           className={`transition-colors hover:text-primary ${isActive("/blog/protected-article") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
         >
-          Content Shield
+          Demo Article
         </Link>
 
         {status === "connected" && (
@@ -37,7 +37,7 @@ export function NavigationLinks() {
             href="/dashboard"
             className={`transition-colors hover:text-primary animate-in fade-in slide-in-from-left-2 ${isActive("/dashboard") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
           >
-            Dashboard
+            Revenue Console
           </Link>
         )}
       </div>
@@ -47,26 +47,26 @@ export function NavigationLinks() {
           href="/register"
           className={`shrink-0 border px-3 py-2 transition-colors hover:border-primary hover:text-primary ${isActive("/register") ? "border-primary text-primary" : "border-border-low"}`}
         >
-          Creator
+          Create AI Checkout
         </Link>
         <Link
           href="/onboarding/agent"
           className={`shrink-0 border px-3 py-2 transition-colors hover:border-primary hover:text-primary ${isActive("/onboarding/agent") ? "border-primary text-primary" : "border-border-low"}`}
         >
-          Agent
+          Agent Integration
         </Link>
         <Link
           href="/blog/protected-article"
           className={`shrink-0 border px-3 py-2 transition-colors hover:border-primary hover:text-primary ${isActive("/blog/protected-article") ? "border-primary text-primary" : "border-border-low"}`}
         >
-          Checkout Demo
+          Demo Article
         </Link>
         {status === "connected" && (
           <Link
             href="/dashboard"
             className={`shrink-0 border px-3 py-2 transition-colors hover:border-primary hover:text-primary ${isActive("/dashboard") ? "border-primary text-primary" : "border-border-low"}`}
           >
-            Dashboard
+            Revenue Console
           </Link>
         )}
       </div>

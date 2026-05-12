@@ -70,22 +70,22 @@ const STEP_META: Record<number, { title: string; description: string }> = {
   1: {
     title: "Intended Use",
     description:
-      "Define how your AI agent will interact with the machine-readable rights checkout.",
+      "Define how your AI agent will interact with the machine-readable rules published by creators.",
   },
   2: {
     title: "Agent Wallet & Budget",
     description:
-      "Initialize your agent with a wallet and automated rights settlement boundaries.",
+      "Initialize your agent with a wallet and automated settlement boundaries for paid actions.",
   },
   3: {
     title: "Live Rights Checkout",
     description:
-      "Watch the Agent Rights Checkout in action: Detect, Negotiate, and Settle.",
+      "The agent detects Sello rules, pays when required, and records proof of permitted use.",
   },
   4: {
     title: "Automated Compliance",
     description:
-      "Ready to go live? Get the instructions to install the Sello Skill for automated compliance.",
+      "Install the Sello Skill to automate the detection and settlement loop in your own agent.",
   },
 };
 

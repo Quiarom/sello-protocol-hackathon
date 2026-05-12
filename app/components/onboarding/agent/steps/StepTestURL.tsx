@@ -303,9 +303,9 @@ export function StepTestURL({
             onClick={() =>
               onUrlChange(`${window.location.origin}/blog/protected-article`)
             }
-            className="stamp-badge text-[10px] text-primary border-primary/30 hover:bg-primary/5 whitespace-nowrap cursor-pointer py-2 sm:py-0"
+            className="text-xs font-mono text-primary uppercase hover:underline decoration-primary decoration-1 underline-offset-4 font-bold cursor-pointer"
           >
-            Try Demo URL
+            Add Demo URL
           </button>
         </div>
         <button

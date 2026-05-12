@@ -274,9 +274,9 @@ export function RegisterArticle() {
             {step === "setup" &&
               "Aval connects its publisher wallet to establish authority over the content hash."}
             {step === "register" &&
-              "Aval creates rules for an article: price, attribution, and authorized actions."}
+              "Aval creates rules for an article. These rules will be read by agents later to automate their usage permissions."}
             {step === "implementation" &&
-              "The app generates machine-readable signals so agents can detect and pay for usage."}
+              "The app generates machine-readable signals so agents can detect, pay, and leave a UsageReceipt."}
             {step === "dashboard" &&
               "Monitor agent requests, recorded Proof of Consent, and your total rights revenue."}
           </p>
@@ -547,7 +547,7 @@ export function RegisterArticle() {
                       step="0.01"
                       value={priceUSDC}
                       onChange={(e) => setPriceUSDC(e.target.value)}
-                      className="postal-input w-full max-w-[7rem] text-center text-2xl font-black text-primary"
+                      className="postal-input w-full max-w-[7rem] text-center text-2xl font-black text-cream"
                     />
                     <span className="font-display text-2xl text-muted">
                       USDC

@@ -101,9 +101,9 @@ export function StepAgentWallet({
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="p-4 bg-primary/5 rounded-full w-fit mx-auto">
+                <div className="p-6 bg-primary/5 rounded-full w-fit mx-auto border border-primary/20">
                   <svg
-                    className="h-8 w-8 text-primary/40"
+                    className="h-12 w-12 text-primary"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -111,21 +111,21 @@ export function StepAgentWallet({
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0012 21a9.003 9.003 0 008.384-5.562M9 14l5 5m0-5l-5 5"
+                      strokeWidth="2"
+                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
                     />
                   </svg>
                 </div>
-                <p className="text-xs text-muted italic max-w-xs mx-auto">
+                <p className="text-base text-muted italic max-w-xs mx-auto leading-relaxed">
                   Connect your wallet to handle the automated x402-style
                   settlement for this agent.
                 </p>
-                <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   {connectors.map((c) => (
                     <button
                       key={c.id}
                       onClick={() => connect(c.id)}
-                      className="stamp-button-secondary w-full px-6 py-3 text-[10px] sm:w-auto"
+                      className="stamp-button w-full px-8 py-4 text-sm sm:w-auto"
                     >
                       Connect {c.name}
                     </button>

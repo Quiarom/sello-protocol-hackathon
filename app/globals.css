@@ -152,30 +152,6 @@
       var(--card);
   }
 
-  .postal-card::before,
-  .postal-card::after {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    pointer-events: none;
-    content: "";
-    opacity: 0.38;
-  }
-
-  .postal-card::before {
-    top: 14px;
-    left: 14px;
-    border-top: 1px solid var(--gold);
-    border-left: 1px solid var(--gold);
-  }
-
-  .postal-card::after {
-    right: 14px;
-    bottom: 14px;
-    border-right: 1px solid var(--gold);
-    border-bottom: 1px solid var(--gold);
-  }
-
   .airmail-stripe {
     background: repeating-linear-gradient(
       -45deg,

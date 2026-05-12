@@ -49,16 +49,16 @@ function DashboardContent() {
         {/* Header */}
         <section className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border-low pb-8">
           <div className="space-y-2 text-center md:text-left">
-            <p className="stamp-badge text-primary uppercase text-[10px] tracking-widest mx-auto md:mx-0 w-fit">
+            <p className="stamp-badge text-primary uppercase text-xs tracking-widest mx-auto md:mx-0 w-fit">
               Aval Newsrooms
             </p>
             <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-cream">
               {view === "agent" ? "Agent Registry" : "Revenue Console"}
             </h1>
-            <p className="text-muted text-base md:text-lg max-w-xl mx-auto md:mx-0">
+            <p className="text-muted text-base md:text-lg max-w-2xl mx-auto md:mx-0 leading-relaxed">
               {view === "agent"
                 ? "History of rights settlement and Proof of Consent receipts issued by your AI."
-                : "Aval Newsrooms Revenue Console: Monitor your protected inventory and rights revenue."}
+                : "Evidence and revenue for AI content usage. Aval shows which articles have AI-readable rules, which agent requests were allowed or blocked, and which Proof of Consent receipts exist."}
             </p>
           </div>
 
@@ -66,7 +66,7 @@ function DashboardContent() {
             <div className="postal-card p-4 flex items-center gap-4 bg-background/50 border-primary/20 shrink-0 self-center md:self-end">
               <div className="h-2 w-2 rounded-full bg-green-ink animate-pulse" />
               <div className="space-y-0.5">
-                <p className="font-mono text-[9px] uppercase text-muted tracking-widest">
+                <p className="font-mono text-xs uppercase text-muted tracking-widest">
                   Active Wallet
                 </p>
                 <p className="font-mono text-xs text-cream">
@@ -135,7 +135,7 @@ function AgentDashboardView() {
       {/* Stats */}
       <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <div className="postal-card p-6 md:p-8 border-primary/30 bg-primary/[0.03]">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Generated Audio
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-primary mt-2 tabular-nums">
@@ -143,7 +143,7 @@ function AgentDashboardView() {
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-gold/30">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Demo Article
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-gold mt-2">
@@ -151,7 +151,7 @@ function AgentDashboardView() {
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-muted/30">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Network
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-cream mt-2">
@@ -159,7 +159,7 @@ function AgentDashboardView() {
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-green-ink/30 bg-green-ink/[0.03]">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Program
           </p>
           <a
@@ -177,15 +177,15 @@ function AgentDashboardView() {
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="space-y-2">
             <p className="font-display text-2xl sm:text-3xl uppercase tracking-widest text-cream">
-              Current Agent Test
+              Agent Integration Registry
             </p>
             <p className="max-w-2xl text-sm text-muted">
-              This dashboard reflects the live demo flow in this deployment: the
-              agent analyzes the protected article, signs a Solana devnet proof,
-              and requests ElevenLabs narration.
+              This shows the agent side of Sello. The publisher already created
+              the checkout. The agent now reads the rules, pays for the paid
+              action, and leaves a Proof of Consent receipt.
             </p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
-              Endpoint: /api/narrate · Audio source: Appwrite narrations bucket
+            <p className="font-mono text-xs uppercase tracking-[0.12em] text-muted">
+              Endpoint: /api/narrate · Audio source: ElevenLabs narrations
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -208,9 +208,9 @@ function AgentDashboardView() {
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row items-center justify-between border-b border-border-low pb-4 gap-4">
           <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-widest text-primary">
-            Voice Audio
+            Voice Assets
           </h3>
-          <span className="stamp-badge text-[10px] text-muted">
+          <span className="stamp-badge text-xs text-muted">
             ElevenLabs Cache
           </span>
         </div>
@@ -230,10 +230,10 @@ function AgentDashboardView() {
                     <p className="font-display text-xl uppercase tracking-widest text-cream">
                       Narration
                     </p>
-                    <p className="mt-1 break-all font-mono text-[10px] text-muted">
+                    <p className="mt-1 break-all font-mono text-xs text-muted">
                       {file.name || file.id}
                     </p>
-                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted">
+                    <p className="mt-1 font-mono text-xs uppercase tracking-[0.12em] text-muted">
                       {new Date(file.createdAt).toLocaleString()} ·{" "}
                       {(file.sizeOriginal / 1024).toFixed(1)} KB
                     </p>
@@ -242,7 +242,7 @@ function AgentDashboardView() {
                     href={file.audioUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="stamp-badge shrink-0 text-[9px] text-primary"
+                    className="stamp-badge shrink-0 text-xs text-primary"
                   >
                     Open
                   </a>
@@ -257,9 +257,8 @@ function AgentDashboardView() {
             ))
           ) : (
             <div className="postal-card p-8 text-sm text-muted lg:col-span-2">
-              No ElevenLabs audio files found in the Appwrite narrations bucket
-              yet. Run the live agent demo and this section will show the
-              generated files when Storage upload succeeds.
+              No ElevenLabs audio files found in the cache yet. Run the live
+              agent integration demo to see generated assets.
             </div>
           )}
         </div>
@@ -269,27 +268,27 @@ function AgentDashboardView() {
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row items-center justify-between border-b border-border-low pb-4 gap-4">
           <h3 className="font-display text-2xl sm:text-3xl uppercase tracking-widest text-cream">
-            Usage Receipts
+            Proof of Consent Receipts
           </h3>
-          <span className="stamp-badge text-[10px] text-muted">
-            No Mock Rows
+          <span className="stamp-badge text-xs text-muted">
+            Solana Devnet Index
           </span>
         </div>
         <div className="postal-card p-8">
           <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
             <div className="space-y-2">
               <p className="font-headline text-2xl font-bold text-cream">
-                Waiting for live receipts
+                Awaiting Agent Checkout Events
               </p>
               <p className="text-sm text-muted">
-                Real receipt rows will appear here once the app stores verified
-                usage receipt signatures. This build intentionally avoids fake
-                transaction links.
+                Proof of Consent receipts will appear here as agents execute
+                x402-style settlements. x402 handles the payment, Sello records
+                the consent, and Aval shows the revenue.
               </p>
-              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
-                Current verifier accepts Solana devnet signatures before
-                narration; strict USDC transfer indexing is the next production
-                step.
+              <p className="font-mono text-xs uppercase tracking-[0.12em] text-muted">
+                Live treasury indexing is not enabled in this demo. The console
+                is wired to show paid usage and receipts as Sello events are
+                recorded on Solana devnet.
               </p>
             </div>
             <a
