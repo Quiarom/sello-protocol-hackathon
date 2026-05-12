@@ -1,0 +1,26 @@
+# Rust build artifacts (HEAVY)
+anchor/target/
+anchor/.anchor/
+
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Appwrite local config (if any)
+.appwrite/
+
+# Large assets or zips
+app/assets/*.zip
+app/assets/*.png
+app/assets/*.jpg
+
+# Git & IDEs
+.git/
+.vscode/
+.idea/
+.DS_Store
+*.log
