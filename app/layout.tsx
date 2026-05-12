@@ -41,11 +41,11 @@ export default function RootLayout({
         <Providers>
           <nav className="sticky top-0 z-50 border-b border-border-low bg-background/95 backdrop-blur-md">
             <div className="airmail-stripe h-1 opacity-70" />
-            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-4 py-4 sm:px-5 md:px-8">
-              <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-6">
+            <div className="mx-auto flex max-w-[1600px] flex-nowrap items-center justify-between gap-x-12 px-4 py-4 sm:px-8 md:px-12">
+              <div className="flex min-w-0 flex-1 flex-nowrap items-center gap-x-10">
                 <Link
                   href="/"
-                  className="flex items-center gap-3 transition-transform hover:scale-[1.02] active:scale-100"
+                  className="flex shrink-0 items-center gap-3 transition-transform hover:scale-[1.02] active:scale-100"
                 >
                   <Image
                     src={logo}
@@ -55,7 +55,7 @@ export default function RootLayout({
                     className="stamp-image h-10 w-10 object-cover shadow-lg md:h-11 md:w-11"
                     priority
                   />
-                  <div className="flex flex-col -space-y-1">
+                  <div className="flex shrink-0 flex-col -space-y-1">
                     <span className="font-headline text-lg font-bold uppercase tracking-[0.22em] text-cream md:text-2xl">
                       Sello
                     </span>
@@ -65,17 +65,18 @@ export default function RootLayout({
                   </div>
                 </Link>
 
-                <div className="hidden h-8 w-px bg-border-low lg:block" />
+                <div className="hidden h-8 w-px shrink-0 bg-border-low lg:block" />
                 <NavigationLinks />
               </div>
 
-              <div className="ml-auto flex items-center gap-2 sm:gap-4 md:gap-5">
-                <div className="hidden items-center gap-2 sm:flex sm:gap-3">
+              <div className="ml-auto flex shrink-0 flex-nowrap items-center gap-4 sm:gap-6 md:gap-8">
+                <div className="hidden flex-nowrap items-center gap-4 shrink-0 sm:flex">
+
                   <a
                     href="https://x.com/selloprotocol"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-9 w-9 items-center justify-center border border-border-low bg-card text-muted transition-all hover:border-primary hover:text-primary active:scale-95"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border border-border-low bg-card text-muted transition-all hover:border-primary hover:text-primary active:scale-95"
                     title="Follow Sello on X"
                   >
                     <svg
@@ -89,10 +90,10 @@ export default function RootLayout({
                   </a>
 
                   <a
-                    href="https://github.com/Quiarom/sello-protocol"
+                    href="https://github.com/Quiarom/sello-protocol-hackathon"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-9 w-9 items-center justify-center border border-border-low bg-card text-muted transition-all hover:border-primary hover:text-primary active:scale-95"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border border-border-low bg-card text-muted transition-all hover:border-primary hover:text-primary active:scale-95"
                     title="Sello Protocol on GitHub"
                   >
                     <svg
@@ -107,7 +108,7 @@ export default function RootLayout({
 
                   <Link
                     href="/dashboard"
-                    className="hidden h-9 w-9 items-center justify-center border border-border-low bg-card text-muted transition-all hover:border-primary hover:text-primary active:scale-95 sm:flex lg:hidden"
+                    className="hidden h-9 w-9 shrink-0 items-center justify-center border border-border-low bg-card text-muted transition-all hover:border-primary hover:text-primary active:scale-95 sm:flex lg:hidden"
                     title="Dashboard"
                   >
                     <svg
@@ -127,8 +128,10 @@ export default function RootLayout({
                   </Link>
                 </div>
 
-                <div className="hidden h-6 w-px bg-border-low sm:block" />
-                <WalletButton />
+                <div className="hidden h-6 w-px shrink-0 bg-border-low sm:block" />
+                <div className="shrink-0">
+                  <WalletButton />
+                </div>
               </div>
             </div>
           </nav>

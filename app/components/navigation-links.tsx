@@ -18,22 +18,22 @@ export function NavigationLinks() {
 
   return (
     <>
-      <div className="hidden items-center gap-6 font-display text-base uppercase tracking-[0.14em] text-muted lg:flex">
+      <div className="hidden flex-nowrap items-center gap-x-4 font-display text-base uppercase tracking-[0.14em] text-muted lg:flex xl:gap-x-8">
         <Link
           href="/register"
-          className={`transition-colors hover:text-primary ${isActive("/register") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
+          className={`shrink-0 whitespace-nowrap transition-colors hover:text-primary ${isActive("/register") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
         >
           Create AI Checkout
         </Link>
         <Link
           href="/onboarding/agent"
-          className={`transition-colors hover:text-primary ${isActive("/onboarding/agent") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
+          className={`shrink-0 whitespace-nowrap transition-colors hover:text-primary ${isActive("/onboarding/agent") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
         >
           Agent Integration
         </Link>
         <Link
           href="/blog/protected-article"
-          className={`transition-colors hover:text-primary ${isActive("/blog/protected-article") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
+          className={`shrink-0 whitespace-nowrap transition-colors hover:text-primary ${isActive("/blog/protected-article") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
         >
           Demo Article
         </Link>
@@ -41,14 +41,14 @@ export function NavigationLinks() {
         {mounted && status === "connected" && (
           <Link
             href="/dashboard"
-            className={`transition-colors hover:text-primary animate-in fade-in slide-in-from-left-2 ${isActive("/dashboard") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
+            className={`shrink-0 whitespace-nowrap transition-colors hover:text-primary animate-in fade-in slide-in-from-left-2 ${isActive("/dashboard") ? "text-primary underline decoration-primary/30 underline-offset-8" : ""}`}
           >
             Revenue Console
           </Link>
         )}
       </div>
 
-      <div className="flex basis-full items-center gap-2 overflow-x-auto pb-1 font-display text-sm uppercase tracking-[0.14em] text-muted lg:hidden">
+      <div className="flex flex-nowrap basis-full items-center gap-2 overflow-x-auto pb-1 font-display text-sm uppercase tracking-[0.14em] text-muted lg:hidden">
         <Link
           href="/register"
           className={`shrink-0 border px-3 py-2 transition-colors hover:border-primary hover:text-primary ${isActive("/register") ? "border-primary text-primary" : "border-border-low"}`}

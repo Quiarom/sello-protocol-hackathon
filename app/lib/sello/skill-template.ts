@@ -80,13 +80,13 @@ export function getPlatformCliSnippet(
   if (platform === "claude-code") {
     return `mkdir -p .claude/skills/sello-content-license && \\
 ${envVars} \\
-curl -s https://raw.githubusercontent.com/Quiarom/sello-protocol/main/.claude/skills/sello-content-license/SKILL.md | \\
+curl -s https://raw.githubusercontent.com/Quiarom/sello-protocol-hackathon/main/.claude/skills/sello-content-license/SKILL.md | \\
 sed "s|\\\${SELLO_SERVER_URL}|${env.serverUrl}|g; s|\\\${SELLO_PAYER_PUBKEY}|${env.payerPubkey}|g; s|\\\${SELLO_MAX_AUTO_PAY}|${env.maxAutoPay.toFixed(2)}|g" > .claude/skills/sello-content-license/SKILL.md`;
   }
 
   if (platform === "gemini-cli") {
     return `mkdir -p .gemini/skills && \\
-curl -s -o .gemini/skills/sello-content-license.md https://raw.githubusercontent.com/Quiarom/sello-protocol/main/.claude/skills/sello-content-license/SKILL.md && \\
+curl -s -o .gemini/skills/sello-content-license.md https://raw.githubusercontent.com/Quiarom/sello-protocol-hackathon/main/.claude/skills/sello-content-license/SKILL.md && \\
 echo "\\nEnvironment variables:\\n${envVars.replace(/ /g, "\\n")}" >> .gemini/skills/sello-content-license.md`;
   }
 
