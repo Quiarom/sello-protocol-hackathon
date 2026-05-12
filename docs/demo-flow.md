@@ -2,13 +2,15 @@
 
 ## Core Narrative
 
-This demo showcases how a newsroom (Aval) uses Sello Protocol to implement an automated **Rights Checkout** for AI agents.
+This demo showcases how a newsroom (Aval) uses Sello Protocol to implement an automated **rights checkout** for AI agents.
+
+**Publisher creates the checkout. Agent uses the checkout. Solana keeps the receipt.**
 
 1. **Detection**: An AI agent arrives at a news article.
 2. **Negotiation**: The agent detects a Sello tag and parses machine-readable rules.
 3. **Settlement**: The agent executes an **x402-style settlement** for a paid action (e.g., voice narration).
-4. **Receipt**: Solana records the **Proof of Consent** (UsageReceipt).
-5. **Audit**: The newsroom monitors revenue and compliance in the **Aval Revenue Console**.
+4. **Receipt**: Solana records the **Proof of Consent** (Solana devnet UsageReceipt).
+5. **Audit**: The newsroom monitors revenue and evidence in the **Aval Revenue Console**.
 
 ## What Judges Can Test
 

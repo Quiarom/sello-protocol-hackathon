@@ -5,7 +5,8 @@ Resource: /blog/protected-article
 Rights-Checkout: sello-voice
 Attribution: According to Daniel Patete in Aval Newsrooms / Asilo Digital
 Summary: allowed_with_attribution
-Training: prohibited_without_separate_license
+Training: restricted
 Voice-Narration: x402-style-settlement-required
 Proof-of-Consent: solana-devnet:CDPPzRN3eeNiSABBiBZVXpUK4uxUAY8wBRemhfGHu2Ug
-Note: This record is a machine-readable Proof of Consent issued on Solana Devnet.
+Note: This is a machine-readable rights signaling aware of EU CDSM Art. 4.
+Context: Publisher creates the checkout. Agent uses the checkout. Solana devnet records the receipt.

@@ -111,18 +111,18 @@ export function CreatorDashboardView({
       {/* Metric Cards */}
       <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <div className="postal-card p-6 md:p-8 border-green-ink/30 bg-green-ink/[0.03]">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Rights Revenue
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-green-ink mt-2 tabular-nums">
             $0.00 <span className="text-sm font-normal">USDC</span>
           </p>
-          <p className="mt-2 text-[10px] text-muted">
+          <p className="mt-2 text-xs text-muted">
             Live treasury indexing is not enabled yet.
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-primary/30">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Protected Inventory
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-cream mt-2">
@@ -130,24 +130,24 @@ export function CreatorDashboardView({
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-gold/30 bg-gold/[0.03]">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Agent Requests
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-gold mt-2">
             0
           </p>
-          <p className="mt-2 text-[10px] text-muted">
+          <p className="mt-2 text-xs text-muted">
             No live agent requests in this session.
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-red-400/30 bg-red-400/[0.03]">
-          <p className="font-mono text-[10px] uppercase text-muted tracking-widest">
+          <p className="font-mono text-xs uppercase text-muted tracking-widest">
             Blocked Attempts
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-red-400 mt-2">
             0
           </p>
-          <p className="mt-2 text-[10px] text-muted">
+          <p className="mt-2 text-xs text-muted">
             No unauthorized access detected.
           </p>
         </div>
@@ -164,14 +164,14 @@ export function CreatorDashboardView({
               <button
                 onClick={runLiveCheck}
                 disabled={isVerifying}
-                className="stamp-badge text-[10px] text-primary hover:bg-primary/10 cursor-pointer"
+                className="stamp-badge text-xs text-primary hover:bg-primary/10 cursor-pointer"
               >
                 {isVerifying ? "Verifying..." : "Run Live Check"}
               </button>
               {onRegisterNew && (
                 <button
                   onClick={onRegisterNew}
-                  className="stamp-badge text-[10px] bg-gold/10 text-gold border-gold/30 hover:bg-gold/20 cursor-pointer"
+                  className="stamp-badge text-xs bg-gold/10 text-gold border-gold/30 hover:bg-gold/20 cursor-pointer"
                 >
                   + Protect New Article
                 </button>
@@ -196,13 +196,13 @@ export function CreatorDashboardView({
                         {art.url}
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        <span className="stamp-badge text-[8px] sm:text-[9px] bg-primary/10 text-primary border-primary/30 uppercase">
+                        <span className="stamp-badge text-xs sm:text-xs bg-primary/10 text-primary border-primary/30 uppercase">
                           {art.license}
                         </span>
                         {PROTOCOL_CHECKS.map(({ id, label }) => (
                           <span
                             key={id}
-                            className={`stamp-badge text-[8px] sm:text-[9px] uppercase flex items-center gap-1 transition-all ${checks.includes(id) ? "bg-green-ink/10 text-green-ink border-green-ink/30" : "bg-card text-muted border-border-low"}`}
+                            className={`stamp-badge text-xs sm:text-xs uppercase flex items-center gap-1 transition-all ${checks.includes(id) ? "bg-green-ink/10 text-green-ink border-green-ink/30" : "bg-card text-muted border-border-low"}`}
                           >
                             {checks.includes(id) && (
                               <span className="h-1 w-1 rounded-full bg-green-ink animate-pulse" />
@@ -213,14 +213,14 @@ export function CreatorDashboardView({
                       </div>
                     </div>
                     <div className="w-full text-left sm:w-auto sm:text-right shrink-0">
-                      <p className="break-all font-mono text-[9px] italic text-muted sm:text-[10px]">
+                      <p className="break-all font-mono text-xs italic text-muted sm:text-xs">
                         PDA: {ellipsify(art.pda, 4)}
                       </p>
                       <a
                         href={`https://explorer.solana.com/address/${art.pda}?cluster=devnet`}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[10px] text-primary underline block mt-1 hover:text-primary-foreground"
+                        className="text-xs text-primary underline block mt-1 hover:text-primary-foreground"
                       >
                         View on Chain
                       </a>

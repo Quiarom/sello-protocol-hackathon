@@ -85,7 +85,8 @@ export function derivePermissions(license: SelloLicenseKey | null): {
     canVoice: paidVoice ? "paid" : hasAllowedUse(allowedUses, "voice"),
     canTrain:
       config.trainingStatus === "Training allowed" ||
-      (hasAllowedUse(allowedUses, "train") && !paidUses.includes("train")),
+      (hasAllowedUse(allowedUses, "train") &&
+        config.trainingStatus !== "Training restricted"),
   };
 }
 

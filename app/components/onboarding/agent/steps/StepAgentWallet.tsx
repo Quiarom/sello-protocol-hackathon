@@ -49,19 +49,19 @@ export function StepAgentWallet({
             </h3>
             <p className="text-xs text-muted">
               Initialize your agent's unique signing authority for x402-style
-              payments.
+              devnet payment.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setWalletMode("phantom")}
-              className={`stamp-badge text-[10px] px-3 py-1 transition-all ${walletMode === "phantom" ? "bg-primary/20 text-primary border-primary" : "text-muted hover:text-cream opacity-50"}`}
+              className={`stamp-badge text-xs px-3 py-1 transition-all ${walletMode === "phantom" ? "bg-primary/20 text-primary border-primary" : "text-muted hover:text-cream opacity-50"}`}
             >
               Browser Wallet
             </button>
             <button
               onClick={() => setWalletMode("manual")}
-              className={`stamp-badge text-[10px] px-3 py-1 transition-all ${walletMode === "manual" ? "bg-primary/20 text-primary border-primary" : "text-muted hover:text-cream opacity-50"}`}
+              className={`stamp-badge text-xs px-3 py-1 transition-all ${walletMode === "manual" ? "bg-primary/20 text-primary border-primary" : "text-muted hover:text-cream opacity-50"}`}
             >
               Manual / CLI
             </button>
@@ -93,7 +93,7 @@ export function StepAgentWallet({
                   </button>
                   <button
                     onClick={() => disconnect()}
-                    className="text-[10px] uppercase font-mono tracking-widest text-muted hover:text-red-400"
+                    className="text-xs uppercase font-mono tracking-widest text-muted hover:text-red-400"
                   >
                     Change Wallet
                   </button>
@@ -117,8 +117,8 @@ export function StepAgentWallet({
                   </svg>
                 </div>
                 <p className="text-base text-muted italic max-w-xs mx-auto leading-relaxed">
-                  Connect your wallet to handle the automated x402-style
-                  settlement for this agent.
+                  Connect your wallet to handle the automated x402-style devnet
+                  payment settlement for this agent.
                 </p>
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   {connectors.map((c) => (

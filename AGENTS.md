@@ -2,9 +2,10 @@
 
 ## Goal
 
-Sello Protocol is a Proof of Consent protocol for AI agents using web content.
-The Colosseum MVP demonstrates one publisher, one article, one license, one
-Solana consent record, and one usage receipt model.
+Sello Protocol is the **rights checkout for AI agents** using newsroom content.
+**Publisher creates the checkout. Agent uses the checkout. Solana keeps the receipt.**
+
+The Colosseum MVP demonstrates the complete loop: rights detection, **x402-style payment**, Solana **Proof of Consent** (UsageReceipt), and revenue monitoring via **Aval Newsrooms**.
 
 ## Current MVP Scope
 
@@ -49,9 +50,10 @@ cd anchor && anchor test
 
 ## Hard Rules
 
+- **Terminology**: Always use "Rights Checkout", "Proof of Consent", "x402-style payment", and "Solana devnet UsageReceipt".
+- **Truth Rules**: Sello does not prove legal ownership; it records published terms for a content hash. Label devnet receipts clearly.
 - Do not add old template program references.
-- Do not claim x402, LI.FI, Firecrawl, or ElevenLabs are production-ready until
-  code supports them.
+- Do not claim production x402, LI.FI, Firecrawl, or ElevenLabs are production-ready until code supports them.
 - Keep the README honest and judge-friendly.
 - Keep generated files out of manual edits unless regenerating from IDL.
 - Do not commit node_modules, target, .anchor, .next, logs, PDFs, or env files.

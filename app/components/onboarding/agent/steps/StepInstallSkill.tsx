@@ -68,18 +68,18 @@ export function StepInstallSkill({
         <p className="mt-2 text-xs sm:text-sm text-muted">
           Run this command in your terminal to configure Sello rules.
         </p>
-        <ol className="mt-4 list-decimal space-y-2 pl-5 text-[11px] sm:text-sm text-foreground">
+        <ol className="mt-4 list-decimal space-y-2 pl-5 text-xs sm:text-sm text-foreground">
           {installInstructions.map((line) => (
             <li key={line}>{line}</li>
           ))}
         </ol>
         <div className="relative mt-4">
-          <pre className="overflow-x-auto border border-border-low bg-background/60 p-4 text-[9px] sm:text-xs font-mono text-green-ink leading-relaxed">
+          <pre className="overflow-x-auto border border-border-low bg-background/60 p-4 text-xs sm:text-xs font-mono text-green-ink leading-relaxed">
             <code>{cliSnippet}</code>
           </pre>
           <button
             type="button"
-            className="absolute top-2 right-2 stamp-badge bg-card text-[9px] sm:text-xs text-muted hover:text-primary cursor-pointer"
+            className="absolute top-2 right-2 stamp-badge bg-card text-xs sm:text-xs text-muted hover:text-primary cursor-pointer"
             onClick={() => navigator.clipboard.writeText(cliSnippet)}
           >
             Copy Command

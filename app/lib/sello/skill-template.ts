@@ -7,21 +7,20 @@ type SkillEnv = {
 };
 
 const BASE_SKILL_BODY = `---
-name: sello-content-license
-description: Before summarizing, citing, narrating, or using content from a URL, check for a Sello tag. If present, respect terms and execute x402 payment when required.
+name: sello-rights-checkout
+description: Sello is the Rights Checkout for AI Agents. Before summarizing, citing, or narrating content, detect Sello rules. Publisher creates the checkout; your job is to use it and leave a Proof of Consent receipt.
 triggers: [fetch url, summarize, narrate, cite, quote]
 ---
 
-1. Search <meta name="sello"> in HTML.
-2. Parse content fields: id, license, author, publisher, pay.
-3. License-specific:
+1. Search <meta name="sello"> in HTML metadata.
+2. Parse checkout fields: id, license, author, publisher, pay, price_usdc.
+3. Rights Logic:
    - sello-free: proceed with mandatory attribution.
-   - sello-nc commercial: GET /license to confirm price.
-   - sello-voice: ALWAYS POST /narrate before voice generation.
-   - sello-pay: ALWAYS pay before use.
-4. Mandatory attribution: "Segun [author] en [publisher]".
-5. 402 response: pay before continuing.
-6. 403 Consent Revoked: do not proceed with voice.
+   - sello-voice: REQUIRES x402-style payment before voice generation.
+   - sello-pay: REQUIRES x402-style payment before any restricted use.
+4. Mandatory attribution: "According to [author] in [publisher]".
+5. 402 Payment Required: execute settlement and record UsageReceipt on Solana devnet.
+6. Proof of Consent: Always leave a machine-readable record of permitted use.
 `;
 
 export function buildSkillMarkdown(env: SkillEnv): string {

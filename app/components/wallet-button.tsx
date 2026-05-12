@@ -44,14 +44,14 @@ export function WalletButton() {
       <div className="relative" ref={ref}>
         <button
           onClick={() => (isOpen ? close() : open())}
-          className="stamp-button h-9 min-w-[118px] cursor-pointer px-3 py-2 text-[10px] sm:min-w-[140px] sm:px-4 sm:text-xs md:text-sm"
+          className="stamp-button h-9 min-w-[118px] cursor-pointer px-3 py-2 text-xs sm:min-w-[140px] sm:px-4 sm:text-xs md:text-sm"
         >
           {status === "connecting" ? "Connecting..." : "Connect Wallet"}
         </button>
 
         {isOpen && (
           <div className="absolute right-0 top-full z-50 mt-3 w-[min(16rem,calc(100vw-2rem))] border border-border-low bg-card p-4 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 sm:w-64">
-            <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted">
+            <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
               Select Firm Authority
             </p>
             <div className="space-y-2">
@@ -83,7 +83,7 @@ export function WalletButton() {
               ))}
             </div>
             {error != null && (
-              <p className="mt-3 font-mono text-[9px] text-primary">
+              <p className="mt-3 font-mono text-xs text-primary">
                 {error instanceof Error ? error.message : String(error)}
               </p>
             )}
@@ -100,7 +100,7 @@ export function WalletButton() {
         className="flex h-9 max-w-[11rem] cursor-pointer items-center gap-2 border border-primary/40 bg-primary/5 px-3 py-2 transition-all hover:border-primary active:scale-95 sm:max-w-none sm:gap-3 sm:px-4"
       >
         <span className="h-2 w-2 rounded-full bg-green-ink animate-pulse shadow-[0_0_8px_#00e38b]" />
-        <span className="truncate font-mono text-[10px] font-bold tracking-wider text-cream sm:text-xs">
+        <span className="truncate font-mono text-xs font-bold tracking-wider text-cream sm:text-xs">
           {ellipsify(address!, 4)}
         </span>
       </button>
@@ -108,7 +108,7 @@ export function WalletButton() {
       {isOpen && (
         <div className="absolute right-0 top-full z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] border border-border-low bg-card p-5 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 sm:w-72 sm:p-6">
           <div className="mb-4">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted">
               Available Liquidity
             </p>
             <p className="font-headline text-2xl font-bold text-cream mt-1">
@@ -122,10 +122,10 @@ export function WalletButton() {
           </div>
 
           <div className="mb-4 bg-background/80 border border-border-low p-3">
-            <p className="font-mono text-[9px] uppercase tracking-widest text-muted mb-1">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-1">
               Public Address
             </p>
-            <p className="break-all font-mono text-[10px] text-cream/80 leading-relaxed">
+            <p className="break-all font-mono text-xs text-cream/80 leading-relaxed">
               {address}
             </p>
           </div>
@@ -133,7 +133,7 @@ export function WalletButton() {
           <div className="flex gap-2">
             <button
               onClick={handleCopy}
-              className="flex-1 stamp-badge bg-background transition-colors hover:text-primary cursor-pointer text-[10px] py-1"
+              className="flex-1 stamp-badge bg-background transition-colors hover:text-primary cursor-pointer text-xs py-1"
             >
               {copied ? "Copied" : "Copy"}
             </button>
@@ -141,7 +141,7 @@ export function WalletButton() {
               href={getExplorerUrl(`/address/${address}`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 stamp-badge bg-background text-center transition-colors hover:text-primary cursor-pointer text-[10px] py-1"
+              className="flex-1 stamp-badge bg-background text-center transition-colors hover:text-primary cursor-pointer text-xs py-1"
             >
               Explorer
             </a>

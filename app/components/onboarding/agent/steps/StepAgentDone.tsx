@@ -31,7 +31,7 @@ export function StepAgentDone({ walletAddress }: StepAgentDoneProps) {
           detect rules, negotiate terms, and execute x402-style settlements.
         </p>
         <div className="mt-8 break-all border border-border-low bg-background/50 px-6 py-4 text-sm text-muted">
-          <span className="font-mono uppercase text-[10px] tracking-widest block mb-1 opacity-50">
+          <span className="font-mono uppercase text-xs tracking-widest block mb-1 opacity-50">
             Solana devnet UsageReceipt authority
           </span>
           <span className="font-mono text-primary font-bold">

@@ -2,6 +2,8 @@
   "version": "1.0",
   "publisher": "Aval Newsrooms / Asilo Digital",
   "author": "Daniel Patete",
+  "context": "The publisher publishes this file so agents can detect AI-readable rights. The agent reads this to know what is free, what requires attribution, and what requires x402-style payment.",
+  "narrative": "Publisher creates the checkout. Agent uses the checkout. Solana keeps the receipt.",
   "default_permission": "allowed_with_conditions",
   "allowed_purposes": [
     {
@@ -16,19 +18,20 @@
   "restricted_purposes": [
     {
       "purpose": "training",
-      "status": "prohibited_without_separate_license"
+      "status": "restricted"
     },
     {
       "purpose": "voice_narration",
-      "status": "licensed_flow_required"
+      "status": "x402-style-payment-required"
     }
   ],
   "sello": {
     "license_type": "sello-voice",
-    "attribution_requirement": "Según Daniel Patete en Aval Newsrooms / Asilo Digital",
+    "attribution_requirement": "According to Daniel Patete in Aval Newsrooms / Asilo Digital",
     "summary_permission": "allowed_with_attribution",
-    "training_restriction": "prohibited_without_separate_license",
-    "voice_narration_condition": "request narration through the licensed flow before producing audio",
-    "solana_record": "demo placeholder or devnet ContentSello PDA from /register"
+    "training_restriction": "restricted",
+    "voice_narration_condition": "execute an x402-style settlement and record a UsageReceipt on Solana devnet before producing audio",
+    "proof_of_consent": "solana:devnet:CDPPzRN3eeNiSABBiBZVXpUK4uxUAY8wBRemhfGHu2Ug",
+    "legal_note": "This is a machine-readable rights signaling aware of EU CDSM Art. 4."
   }
 }

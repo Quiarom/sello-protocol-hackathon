@@ -50,7 +50,7 @@ function StatusPill({
 
   return (
     <span
-      className={`stamp-badge text-[9px] uppercase font-bold tracking-tighter ${toneClass}`}
+      className={`stamp-badge text-xs uppercase font-bold tracking-tighter ${toneClass}`}
     >
       {label}
     </span>
@@ -68,16 +68,14 @@ function DetailCard({
 }) {
   return (
     <div className="min-w-0">
-      <p className="font-mono text-[9px] uppercase tracking-widest text-muted">
+      <p className="font-mono text-xs uppercase tracking-widest text-muted">
         {label}
       </p>
       <p className="mt-1 break-words font-headline text-lg font-black uppercase text-cream">
         {value}
       </p>
       {note ? (
-        <p className="mt-1 text-[10px] leading-relaxed text-muted italic">
-          {note}
-        </p>
+        <p className="mt-1 text-xs leading-relaxed text-muted italic">{note}</p>
       ) : null}
     </div>
   );
@@ -147,11 +145,11 @@ export function SelloCheckout({
         {/* Header */}
         <div className="p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <span className="stamp-badge text-[10px] text-gold font-bold italic">
-              Sello Checkout
+            <span className="stamp-badge text-xs text-gold font-bold italic">
+              Rights Checkout
             </span>
-            <span className="text-[10px] font-mono text-muted uppercase">
-              x402 devnet flow
+            <span className="text-xs font-mono text-muted uppercase">
+              x402-style devnet payment
             </span>
           </div>
           <div className="grid grid-cols-2 gap-4">

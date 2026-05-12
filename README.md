@@ -1,11 +1,25 @@
 # Sello Protocol
 
-Sello Protocol is the **Rights Checkout for AI agents** using newsroom content.
+Sello Protocol is the **rights checkout for AI agents** using newsroom content.
 Creators publish machine-readable rules, Solana records the **Proof of Consent**, and
 agents use automated checkouts to pay for usage (x402) and verify permissions.
 
-Aval Newsrooms is the first demo product: a revenue console for newsrooms to
-register protected inventory, publish machine-readable rules, and monitor rights revenue.
+## The Colosseum Story
+
+The original Dev3Pack version positioned Sello as a broad Proof of Consent protocol for AI-era content. While that was a strong vision, it was too broad and legal-first.
+
+The Colosseum version transforms that vision into a clear, transactional product flow:
+**Publisher creates the checkout. Agent uses the checkout. Solana keeps the receipt.**
+
+Sello now focuses on agent rights detection, **x402-style payment**, Solana on-chain receipts, and publisher revenue/evidence reports via **Aval Newsrooms**.
+
+## Core Loop
+
+1. **Publish**: The publisher creates the checkout by defining rules (Price, Attribution, No-Train).
+2. **Detect**: Agents detect Sello tags and machine-readable rights before using content.
+3. **Settle**: Agents execute an **x402-style settlement** for paid actions like voice narration.
+4. **Record**: Solana records the **Proof of Consent** (UsageReceipt) on devnet.
+5. **Monitor**: Aval Newsrooms shows evidence, agent requests, and rights revenue.
 
 ## Why Proof of Consent?
 
@@ -14,13 +28,7 @@ for a content hash by a wallet or entity at a specific time. It allows agents to
 verify what is allowed (attribution, payment, or restricted) before they use content,
 voices, or media.
 
-## The Narrative
-
-1. **Publish**: Creators define rules (Price, Attribution, No-Train).
-2. **Checkout**: Agents detect Sello tags and trigger an automated rights checkout.
-3. **Settle**: Agents pay (x402-style settlement) for specific actions like voice narration.
-4. **Record**: Solana keeps the Proof of Consent (UsageReceipt).
-5. **Monitor**: Aval Newsrooms shows revenue, agent requests, and compliance audits.
+**Note**: Sello does not prove legal ownership of content; it records that a specific entity published terms and an agent followed them.
 
 ## Key Features
 

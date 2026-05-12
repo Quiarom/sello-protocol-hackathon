@@ -59,7 +59,7 @@ export default function RootLayout({
                     <span className="font-headline text-lg font-bold uppercase tracking-[0.22em] text-cream md:text-2xl">
                       Sello
                     </span>
-                    <span className="font-mono text-[8px] font-bold uppercase tracking-[0.28em] text-primary">
+                    <span className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-primary">
                       Protocol
                     </span>
                   </div>
