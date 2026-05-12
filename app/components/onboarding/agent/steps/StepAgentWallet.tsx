@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SimulatedLiFiWidget } from "@/app/components/lifi/SimulatedLiFiWidget";
 import type { PaymentConfig } from "@/app/components/onboarding/agent/types";
 import { useWallet } from "@/app/lib/wallet/context";
@@ -37,6 +37,23 @@ export function StepAgentWallet({
     walletMode === "phantom"
       ? (connectedAddress ?? agentWalletAddress ?? "")
       : (agentWalletAddress ?? "");
+
+  useEffect(() => {
+    if (connectedAddress && agentWalletAddress !== connectedAddress) {
+      onWalletChange(connectedAddress);
+    }
+  }, [agentWalletAddress, connectedAddress, onWalletChange]);
+
+  const confirmIdentity = () => {
+    if (!activeWallet) {
+      toast.error("Connect a devnet wallet before starting the fast demo.");
+      return;
+    }
+
+    onWalletChange(activeWallet);
+    toast.success("Identity Confirmed");
+    onContinue();
+  };
 
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-6 duration-700">
@@ -339,7 +356,7 @@ solana-keygen pubkey agent.json`}</code>
       <div className="flex justify-center pt-6">
         <button
           type="button"
-          onClick={onContinue}
+          onClick={confirmIdentity}
           disabled={!activeWallet}
           className="stamp-button w-full sm:w-auto py-5 px-20 text-2xl group shadow-2xl"
         >

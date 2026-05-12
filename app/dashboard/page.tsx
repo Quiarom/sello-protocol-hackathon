@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useWallet } from "@/app/lib/wallet/context";
 import { ellipsify } from "@/app/lib/explorer";
 import { CreatorDashboardView } from "@/app/components/dashboard/CreatorDashboardView";
+import { selloDemoArticle } from "@/app/lib/sello/constants";
 
 type NarrationFile = {
   id: string;
@@ -12,6 +13,24 @@ type NarrationFile = {
   audioUrl: string;
   createdAt: string;
   sizeOriginal: number;
+};
+
+type LastAgentDemo = {
+  articleUrl: string;
+  title: string;
+  author: string;
+  publisher: string;
+  license: string | null;
+  priceUSDC: number;
+  attribution: string;
+  contentSelloPDA: string | null;
+  walletAddress: string;
+  signature: string;
+  audioUrl: string | null;
+  inlineAudio: string | null;
+  mimeType: string;
+  voiceId?: string;
+  createdAt: string;
 };
 
 const SELLO_PROGRAM_ID = "3P8km3sUTKc5EZywxVxPoFFFJzPxWGjVHtKLSU2iy7mY";
@@ -106,9 +125,19 @@ function DashboardContent() {
 function AgentDashboardView() {
   const [narrations, setNarrations] = useState<NarrationFile[]>([]);
   const [isLoadingNarrations, setIsLoadingNarrations] = useState(true);
+  const [lastDemo, setLastDemo] = useState<LastAgentDemo | null>(null);
 
   useEffect(() => {
     let isMounted = true;
+
+    const cachedDemo = window.localStorage.getItem("sello:last-agent-demo");
+    if (cachedDemo) {
+      try {
+        setLastDemo(JSON.parse(cachedDemo) as LastAgentDemo);
+      } catch {
+        window.localStorage.removeItem("sello:last-agent-demo");
+      }
+    }
 
     async function loadNarrations() {
       try {
@@ -130,6 +159,18 @@ function AgentDashboardView() {
     };
   }, []);
 
+  const latestNarrationUrl =
+    lastDemo?.audioUrl ?? lastDemo?.inlineAudio ?? narrations[0]?.audioUrl;
+  const latestNarrationLabel =
+    lastDemo?.voiceId ?? narrations[0]?.name ?? "ElevenLabs narration";
+  const demoArticleUrl = lastDemo?.articleUrl ?? DEMO_ARTICLE_PATH;
+  const demoContentPda =
+    lastDemo?.contentSelloPDA ?? selloDemoArticle.contentPda;
+  const demoPrice = lastDemo?.priceUSDC ?? 0.1;
+  const demoLicense = lastDemo?.license ?? selloDemoArticle.license;
+  const demoWallet =
+    lastDemo?.walletAddress ?? selloDemoArticle.publisher.walletAddress;
+
   return (
     <div className="space-y-10 animate-in fade-in duration-700">
       {/* Stats */}
@@ -144,10 +185,10 @@ function AgentDashboardView() {
         </div>
         <div className="postal-card p-6 md:p-8 border-gold/30">
           <p className="font-mono text-xs uppercase text-muted tracking-widest">
-            Demo Article
+            Agent Requests
           </p>
           <p className="font-headline text-3xl md:text-4xl font-black text-gold mt-2">
-            1
+            {lastDemo ? 1 : 0}
           </p>
         </div>
         <div className="postal-card p-6 md:p-8 border-muted/30">
@@ -201,6 +242,93 @@ function AgentDashboardView() {
             >
               Open Article
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="postal-card overflow-hidden border-gold/30 bg-gold/[0.02]">
+        <div className="border-b border-border-low bg-gold/10 p-4">
+          <p className="font-mono text-xs font-black uppercase tracking-widest text-gold">
+            Demo Article Rights Checkout
+          </p>
+        </div>
+        <div className="grid gap-6 p-6 lg:grid-cols-[1.2fr_0.8fr] sm:p-8">
+          <div className="space-y-5">
+            <div>
+              <p className="font-display text-2xl uppercase tracking-widest text-cream">
+                {selloDemoArticle.title}
+              </p>
+              <p className="mt-2 max-w-2xl text-sm text-muted">
+                Publisher-created Rights Checkout for the protected demo
+                article. The agent reads this record, pays for voice usage, and
+                leaves a Proof of Consent as a Solana devnet UsageReceipt.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <InfoPill
+                label="Article"
+                value={demoArticleUrl}
+                href={demoArticleUrl}
+              />
+              <InfoPill label="License" value={demoLicense} />
+              <InfoPill label="Price" value={`$${demoPrice.toFixed(2)} USDC`} />
+              <InfoPill
+                label="Publisher"
+                value={selloDemoArticle.publisher.name}
+              />
+              <InfoPill
+                label="Author"
+                value={lastDemo?.author ?? selloDemoArticle.author}
+              />
+              <InfoPill
+                label="Agent wallet"
+                value={demoWallet}
+                href={`https://explorer.solana.com/address/${demoWallet}?cluster=devnet`}
+              />
+              <InfoPill
+                label="ContentSello PDA"
+                value={demoContentPda}
+                href={`https://explorer.solana.com/address/${demoContentPda}?cluster=devnet`}
+              />
+              {lastDemo?.signature ? (
+                <InfoPill
+                  label="Latest transaction"
+                  value={lastDemo.signature}
+                  href={`https://explorer.solana.com/tx/${lastDemo.signature}?cluster=devnet`}
+                />
+              ) : null}
+            </div>
+          </div>
+
+          <div className="postal-card border-primary/20 bg-background/50 p-5">
+            <p className="font-mono text-xs uppercase tracking-widest text-primary">
+              ElevenLabs audio
+            </p>
+            <p className="mt-2 break-all text-sm text-cream">
+              {latestNarrationUrl
+                ? latestNarrationLabel
+                : "No generated narration yet"}
+            </p>
+            {latestNarrationUrl ? (
+              <>
+                <audio
+                  controls
+                  preload="metadata"
+                  src={latestNarrationUrl}
+                  className="mt-4 w-full accent-primary"
+                />
+                {lastDemo?.createdAt ? (
+                  <p className="mt-3 font-mono text-xs uppercase tracking-[0.12em] text-muted">
+                    Generated {new Date(lastDemo.createdAt).toLocaleString()}
+                  </p>
+                ) : null}
+              </>
+            ) : (
+              <p className="mt-4 text-sm text-muted">
+                Run the Agent Demo after configuring ElevenLabs to attach the
+                generated audio here.
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -278,30 +406,76 @@ function AgentDashboardView() {
           <div className="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
             <div className="space-y-2">
               <p className="font-headline text-2xl font-bold text-cream">
-                Awaiting Agent Checkout Events
+                {lastDemo
+                  ? "Latest Solana devnet UsageReceipt"
+                  : "Awaiting Agent Checkout Events"}
               </p>
               <p className="text-sm text-muted">
-                Proof of Consent receipts will appear here as agents execute
-                x402-style settlements. x402 handles the payment, Sello records
-                the consent, and Aval shows the revenue.
+                {lastDemo
+                  ? "The latest Agent Demo produced an x402-style payment transaction and requested narration unlock. This is devnet evidence, not legal ownership proof."
+                  : "Proof of Consent receipts will appear here as agents execute x402-style settlements. x402 handles the payment, Sello records the consent, and Aval shows the revenue."}
               </p>
               <p className="font-mono text-xs uppercase tracking-[0.12em] text-muted">
-                Live treasury indexing is not enabled in this demo. The console
-                is wired to show paid usage and receipts as Sello events are
-                recorded on Solana devnet.
+                {lastDemo
+                  ? `Tx: ${lastDemo.signature}`
+                  : "Live treasury indexing is not enabled in this demo. The console is wired to show paid usage and receipts as Sello events are recorded on Solana devnet."}
               </p>
             </div>
             <a
-              href={`https://explorer.solana.com/address/${SELLO_PROGRAM_ID}?cluster=devnet`}
+              href={
+                lastDemo
+                  ? `https://explorer.solana.com/tx/${lastDemo.signature}?cluster=devnet`
+                  : `https://explorer.solana.com/address/${SELLO_PROGRAM_ID}?cluster=devnet`
+              }
               target="_blank"
               rel="noreferrer"
               className="stamp-badge w-fit text-primary"
             >
-              View Program
+              {lastDemo ? "View Transaction" : "View Program"}
             </a>
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function InfoPill({
+  label,
+  value,
+  href,
+}: {
+  label: string;
+  value: string;
+  href?: string;
+}) {
+  const content = (
+    <>
+      <span className="block font-mono text-[10px] uppercase tracking-widest text-muted">
+        {label}
+      </span>
+      <span className="mt-1 block break-all font-mono text-xs text-cream">
+        {value}
+      </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel={href.startsWith("http") ? "noreferrer" : undefined}
+        className="border border-border-low bg-background/40 p-3 transition-colors hover:border-primary/40"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="border border-border-low bg-background/40 p-3">
+      {content}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { OnboardingShell } from "@/app/components/onboarding/OnboardingShell";
 import {
   INITIAL_AGENT_ONBOARDING_STATE,
@@ -16,9 +16,11 @@ import { StepInstallSkill } from "@/app/components/onboarding/agent/steps/StepIn
 import { StepAgentWallet } from "@/app/components/onboarding/agent/steps/StepAgentWallet";
 import { StepTestURL } from "@/app/components/onboarding/agent/steps/StepTestURL";
 import { StepAgentDone } from "@/app/components/onboarding/agent/steps/StepAgentDone";
+import { useWallet } from "@/app/lib/wallet/context";
 
 type Action =
   | { type: "next-step" }
+  | { type: "set-step"; step: number }
   | { type: "toggle-usage"; usage: UsageType }
   | { type: "set-platform"; platform: AgentPlatform }
   | { type: "set-skill-installed"; value: boolean }
@@ -36,6 +38,8 @@ function reducer(
   switch (action.type) {
     case "next-step":
       return { ...state, step: Math.min(6, state.step + 1) };
+    case "set-step":
+      return { ...state, step: action.step };
     case "toggle-usage": {
       const exists = state.usageTypes.includes(action.usage);
       return {
@@ -91,11 +95,26 @@ const STEP_META: Record<number, { title: string; description: string }> = {
 
 export function AgentOnboarding() {
   const [state, dispatch] = useReducer(reducer, INITIAL_AGENT_ONBOARDING_STATE);
+  const { signer, status } = useWallet();
+  const connectedWalletAddress = signer?.address ?? null;
+
+  useEffect(() => {
+    if (
+      connectedWalletAddress &&
+      state.agentWalletAddress !== connectedWalletAddress
+    ) {
+      dispatch({ type: "set-wallet", wallet: connectedWalletAddress });
+    }
+  }, [connectedWalletAddress, state.agentWalletAddress]);
 
   const jumpToCheckout = () => {
-    // Jump straight to step 3
-    dispatch({ type: "next-step" }); // to step 2
-    dispatch({ type: "next-step" }); // to step 3
+    if (status === "connected" && connectedWalletAddress) {
+      dispatch({ type: "set-wallet", wallet: connectedWalletAddress });
+      dispatch({ type: "set-step", step: 3 });
+      return;
+    }
+
+    dispatch({ type: "set-step", step: 2 });
   };
 
   const analyzeLicense = async () => {
@@ -130,7 +149,11 @@ export function AgentOnboarding() {
   };
 
   if (state.step === 5) {
-    return <StepAgentDone walletAddress={state.agentWalletAddress} />;
+    return (
+      <StepAgentDone
+        walletAddress={state.agentWalletAddress ?? connectedWalletAddress}
+      />
+    );
   }
 
   const stepMeta = STEP_META[state.step];

@@ -51,7 +51,7 @@ export function StepTestURL({
   onAnalyze,
   onContinue,
 }: StepTestURLProps) {
-  const { signer } = useWallet();
+  const { signer, status, connectors, connect } = useWallet();
   const { send } = useSendTransaction();
 
   const [payLoading, setPayLoading] = useState(false);
@@ -73,6 +73,12 @@ export function StepTestURL({
   };
 
   const runFullDemo = async () => {
+    if (!signer) {
+      setPayError("Connect a devnet wallet before running the fast demo.");
+      setDemoLogs([]);
+      addLog("Wallet connection required before checkout.", "warning");
+      return;
+    }
     if (!testURL) return;
     setIsDemoRunning(true);
     setDemoLogs([]);
@@ -253,6 +259,28 @@ export function StepTestURL({
         voiceId: body.voiceId,
         mimeType,
       });
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "sello:last-agent-demo",
+          JSON.stringify({
+            articleUrl: testURL,
+            title: "Agent Rights Checkout",
+            author: result.author,
+            publisher: result.publisher,
+            license: result.license,
+            priceUSDC: result.priceUSDC,
+            attribution: result.attribution,
+            contentSelloPDA: result.contentSelloPDA,
+            walletAddress: signer.address,
+            signature,
+            audioUrl: body.audioUrl ?? null,
+            inlineAudio: body.audioBase64 ? audioSrc : null,
+            mimeType,
+            voiceId: body.voiceId,
+            createdAt: new Date().toISOString(),
+          })
+        );
+      }
       addLog(
         body.audioUrl
           ? "ElevenLabs narration cached and ready to play."
@@ -278,6 +306,39 @@ export function StepTestURL({
 
   return (
     <div className="space-y-6">
+      {!signer ? (
+        <section className="postal-card border-gold/30 bg-gold/[0.03] p-5 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="space-y-1">
+              <p className="font-display text-xl uppercase tracking-widest text-gold">
+                Wallet required for fast demo
+              </p>
+              <p className="text-sm text-muted">
+                Connect a devnet wallet before the agent signs the x402-style
+                payment and records the Solana devnet UsageReceipt.
+              </p>
+              {status === "error" ? (
+                <p className="text-xs text-red-300">
+                  Wallet connection failed. Try reconnecting or choose another
+                  wallet.
+                </p>
+              ) : null}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {connectors.map((connector) => (
+                <button
+                  key={connector.id}
+                  type="button"
+                  onClick={() => connect(connector.id)}
+                  className="stamp-button px-6 py-3 text-sm"
+                >
+                  Connect {connector.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
       <section className="postal-card p-6 sm:p-8 space-y-4 shadow-xl border-primary/20">
         <label className="font-display text-xl sm:text-2xl uppercase tracking-[0.14em] text-primary">
           Live Rights Checkout
